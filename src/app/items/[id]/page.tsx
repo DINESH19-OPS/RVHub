@@ -232,6 +232,8 @@ export default function ItemDetailPage() {
                     ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV4yWihrnwBCaQNXCMF_zSIAPDMidcLtnR3g&s"
                     : item.name.toLowerCase().includes("great gatsby")
                     ? "https://rukminim2.flixcart.com/image/480/640/l4fxh8w0/book/z/0/y/the-great-gatsby-a-novel-original-imagfbmgfsan3gjg.jpeg?q=90"
+                    : item.name.toLowerCase().includes("shawshank")
+                    ? "https://m.media-amazon.com/images/I/71nBGhNjGIL._AC_UF1000,1000_QL80_.jpg"
                     : item.imageUrl ||
                       "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
                 }
