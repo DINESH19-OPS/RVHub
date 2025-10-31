@@ -213,9 +213,19 @@ export default function ItemDetailPage() {
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="relative aspect-square overflow-hidden rounded-lg bg-muted">
               <Image
-                src={item.imageUrl || "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800"}
+                src={
+                  item.name.toLowerCase().includes("iphone 15")
+                    ? "/images/iphone-15-pro.svg"
+                    : item.imageUrl ||
+                      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
+                }
                 alt={item.name}
                 fill
+                unoptimized
+                onError={(e) => {
+                  const img = e.currentTarget as HTMLImageElement;
+                  img.src = "/images/iphone-15-pro.svg";
+                }}
                 className="object-cover"
               />
             </div>

@@ -201,9 +201,20 @@ export default function HomePage() {
                   <Card className="group overflow-hidden border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 h-full">
                     <div className="relative aspect-square overflow-hidden bg-muted">
                       <Image
-                        src={item.imageUrl || "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"}
+                        src={
+                          item.name.toLowerCase().includes("iphone 15")
+                            ? "/images/iphone-15-pro.svg"
+                            : item.imageUrl ||
+                              "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80"
+                        }
                         alt={item.name}
                         fill
+                        unoptimized
+                        onError={(e) => {
+                          // Graceful fallback in case remote image fails
+                          const img = e.currentTarget as HTMLImageElement;
+                          img.src = "/images/iphone-15-pro.svg";
+                        }}
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <Badge className="absolute top-3 right-3 bg-card/90 backdrop-blur-sm border-border/50">
