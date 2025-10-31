@@ -117,7 +117,7 @@ async function main() {
             name: 'Notion',
             description: 'All-in-one workspace for notes, tasks, wikis, and databases',
             category: 'Apps',
-            imageUrl: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?w=400',
+            imageUrl: 'https://preview.redd.it/what-are-your-thoughts-on-notion-ai-has-it-truly-simplified-v0-2telgdckvbmc1.jpg?width=400&format=pjpg&auto=webp&s=ca8fca67ac9c39e086571875be24b2988cf3af5a',
             averageRating: 4.6,
             totalReviews: 4,
             createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
