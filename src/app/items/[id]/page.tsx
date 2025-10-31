@@ -215,7 +215,9 @@ export default function ItemDetailPage() {
               <Image
                 src={
                   item.name.toLowerCase().includes("iphone 15")
-                    ? "/images/iphone-15-pro.svg"
+                    ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_zJnvLwcXGHYA6yui-qBOft8dtGWlD8MYvQ&s"
+                    : item.name.toLowerCase().includes("tokyo disney")
+                    ? "https://girleatworld.net/wp-content/uploads/2019/05/tokyo-disneyland-08.jpg"
                     : item.imageUrl ||
                       "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
                 }
