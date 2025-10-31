@@ -27,7 +27,7 @@ async function main() {
             name: 'Sony WH-1000XM5 Headphones',
             description: 'Industry-leading noise canceling wireless headphones with exceptional sound quality and comfort',
             category: 'Products',
-            imageUrl: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400',
+            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYJ12JMPQz_1mdyX406svZd5eun5m9IdSMbA&s',
             averageRating: 4.6,
             totalReviews: 3,
             createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),

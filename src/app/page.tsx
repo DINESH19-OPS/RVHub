@@ -230,6 +230,8 @@ export default function HomePage() {
                             ? "https://mir-s3-cdn-cf.behance.net/project_modules/hd/8d8f28105415493.619ded067937d.jpg"
                             : item.name.toLowerCase().includes("dark knight")
                             ? "https://m.media-amazon.com/images/S/pv-target-images/e9a43e647b2ca70e75a3c0af046c4dfdcd712380889779cbdc2c57d94ab63902.jpg"
+                            : item.name.toLowerCase().includes("sony wh-1000xm5")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYJ12JMPQz_1mdyX406svZd5eun5m9IdSMbA&s"
                             : item.imageUrl ||
                               "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80"
                         }
