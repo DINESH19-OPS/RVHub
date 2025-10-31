@@ -206,6 +206,10 @@ export default function HomePage() {
                             ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_zJnvLwcXGHYA6yui-qBOft8dtGWlD8MYvQ&s"
                             : item.name.toLowerCase().includes("tokyo disney")
                             ? "https://girleatworld.net/wp-content/uploads/2019/05/tokyo-disneyland-08.jpg"
+                            : item.name.toLowerCase().includes("central park")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYFg1fhUSFsOpcW70iE11uXzQuTpfj5tv3fA&s"
+                            : item.name.toLowerCase().includes("chatgpt")
+                            ? "https://thumbs.dreamstime.com/b/chatgpt-artificial-intelligence-program-logo-openai-company-polygonal-green-background-illustration-banner-news-vector-286505082.jpg"
                             : item.imageUrl ||
                               "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80"
                         }
