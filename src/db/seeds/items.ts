@@ -127,7 +127,7 @@ async function main() {
             name: 'The Great Gatsby',
             description: 'Classic American novel by F. Scott Fitzgerald exploring themes of wealth, love, and the American Dream',
             category: 'Books',
-            imageUrl: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400',
+            imageUrl: 'https://rukminim2.flixcart.com/image/480/640/l4fxh8w0/book/z/0/y/the-great-gatsby-a-novel-original-imagfbmgfsan3gjg.jpeg?q=90',
             averageRating: 4.3,
             totalReviews: 3,
             createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
