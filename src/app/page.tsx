@@ -214,6 +214,8 @@ export default function HomePage() {
                             ? "https://preview.redd.it/what-are-your-thoughts-on-notion-ai-has-it-truly-simplified-v0-2telgdckvbmc1.jpg?width=400&format=pjpg&auto=webp&s=ca8fca67ac9c39e086571875be24b2988cf3af5a"
                             : item.name.toLowerCase().includes("harry potter")
                             ? "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1598823299i/42844155.jpg"
+                            : item.name.toLowerCase().includes("mockingbird")
+                            ? "https://m.media-amazon.com/images/I/81gkyAx5-RL._AC_UF1000,1000_QL80_.jpg"
                             : item.imageUrl ||
                               "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80"
                         }

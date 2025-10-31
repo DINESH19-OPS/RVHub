@@ -157,7 +157,7 @@ async function main() {
             name: 'To Kill a Mockingbird',
             description: 'Pulitzer Prize-winning novel by Harper Lee addressing racial injustice in the American South',
             category: 'Books',
-            imageUrl: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400',
+            imageUrl: 'https://m.media-amazon.com/images/I/81gkyAx5-RL._AC_UF1000,1000_QL80_.jpg',
             averageRating: 4.8,
             totalReviews: 4,
             createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
