@@ -224,6 +224,12 @@ export default function HomePage() {
                             ? "https://www.indiaistore.com/files/uploads/products/macbook-air-m3/images/hero_small_2x.png?1708555710106"
                             : item.name.toLowerCase().includes("shawshank")
                             ? "https://m.media-amazon.com/images/I/71nBGhNjGIL._AC_UF1000,1000_QL80_.jpg"
+                            : item.name.toLowerCase().includes("inception")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXWnBnPN47nWvqWJAxw-vmchKc_2u1zkG6Bw&s"
+                            : item.name.toLowerCase().includes("interstellar")
+                            ? "https://mir-s3-cdn-cf.behance.net/project_modules/hd/8d8f28105415493.619ded067937d.jpg"
+                            : item.name.toLowerCase().includes("dark knight")
+                            ? "https://m.media-amazon.com/images/S/pv-target-images/e9a43e647b2ca70e75a3c0af046c4dfdcd712380889779cbdc2c57d94ab63902.jpg"
                             : item.imageUrl ||
                               "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80"
                         }
