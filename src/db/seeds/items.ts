@@ -147,7 +147,7 @@ async function main() {
             name: 'Harry Potter and the Sorcerer\'s Stone',
             description: 'Magical adventure story that launched the beloved Harry Potter series by J.K. Rowling',
             category: 'Books',
-            imageUrl: 'https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?w=400',
+            imageUrl: 'https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1598823299i/42844155.jpg',
             averageRating: 4.9,
             totalReviews: 6,
             createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
