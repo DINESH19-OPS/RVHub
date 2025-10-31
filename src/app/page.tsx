@@ -216,6 +216,8 @@ export default function HomePage() {
                             ? "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1598823299i/42844155.jpg"
                             : item.name.toLowerCase().includes("mockingbird")
                             ? "https://m.media-amazon.com/images/I/81gkyAx5-RL._AC_UF1000,1000_QL80_.jpg"
+                            : item.name.toLowerCase().includes("1984")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV4yWihrnwBCaQNXCMF_zSIAPDMidcLtnR3g&s"
                             : item.imageUrl ||
                               "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80"
                         }

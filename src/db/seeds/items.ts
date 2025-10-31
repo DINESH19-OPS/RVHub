@@ -137,7 +137,7 @@ async function main() {
             name: '1984',
             description: 'Dystopian masterpiece by George Orwell about totalitarianism and surveillance',
             category: 'Books',
-            imageUrl: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400',
+            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV4yWihrnwBCaQNXCMF_zSIAPDMidcLtnR3g&s',
             averageRating: 4.7,
             totalReviews: 5,
             createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
