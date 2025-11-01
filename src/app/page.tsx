@@ -232,6 +232,30 @@ export default function HomePage() {
                             ? "https://m.media-amazon.com/images/S/pv-target-images/e9a43e647b2ca70e75a3c0af046c4dfdcd712380889779cbdc2c57d94ab63902.jpg"
                             : item.name.toLowerCase().includes("sony wh-1000xm5")
                             ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYJ12JMPQz_1mdyX406svZd5eun5m9IdSMbA&s"
+                            : item.name.toLowerCase().includes("samsung galaxy s24")
+                            ? "https://cdn.beebom.com/mobile/samsung-galaxy-s24-plus-front-and-back-2.png"
+                            : item.name.toLowerCase().includes("grand canyon")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW78IjxmOtLNz3f2eD9OwPOklJQvLO_HyTZw&s"
+                            : item.name.toLowerCase().includes("spotify")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWh6hfzpYZ_Xl6HXMYj5GDn_nAB0ZzgSTUbQ&s"
+                            : item.name.toLowerCase().includes("netflix")
+                            ? "https://i.pinimg.com/736x/74/1a/3f/741a3f0ffd0804044e73d284fb24e97f.jpg"
+                            : item.name.toLowerCase().includes("blue hill")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWFwHWiVfL9ran5W8UbxC4kkFfbD-h2LJx6w&s"
+                            : item.name.toLowerCase().includes("le bernardin")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwWi_KvMJl5v7dKyf91Vmq8qYraJUk6xgAw&s"
+                            : item.name.toLowerCase().includes("nobu")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAIxr4yk49_U_wfhpQRPV36DHnL8KJJUtC0A&s"
+                            : item.name.toLowerCase().includes("per se")
+                            ? "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/4a/56/fa/le-restaurant-perse-a.jpg?w=900&h=500&s=1"
+                            : item.name.toLowerCase().includes("legend of zelda")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTAFPUkmf9yU3QTAZQECyg-m_PHOAxl6Pjkw&s"
+                            : item.name.toLowerCase().includes("elden ring")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_cg0wulPkBFh1D9b1Q4B3LUgR7zaFdQr08g&s"
+                            : item.name.toLowerCase().includes("god of war")
+                            ? "https://m.media-amazon.com/images/M/MV5BMDkxMzExYjAtZmQwMC00MmQzLWE1M2QtMGEwY2M1N2I0NDIwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+                            : item.name.toLowerCase().includes("red dead redemption")
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2PXtURBeowi2QaLDkAXMJ_akB8C8w3DlIgw&s"
                             : item.imageUrl ||
                               "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80"
                         }
