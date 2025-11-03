@@ -273,6 +273,39 @@ export default function HomePage() {
                         {item.category}
                       </Badge>
                     </div>
+
+                    {/* Product / Movie / Generic action under image */}
+                    <div className="px-4 pt-2">
+                      {item.category === "Products" ? (
+                        <Button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const url = `https://www.amazon.in/s?k=${encodeURIComponent(item.name)}`;
+                            window.open(url, "_blank", "noopener");
+                          }}
+                          className="w-full bg-primary hover:bg-primary/90"
+                        >
+                          Buy
+                        </Button>
+                      ) : item.category === "Movies" ? (
+                        <div className="text-sm text-muted-foreground">You can watch on any OTT platforms</div>
+                      ) : (
+                        <Button
+                          variant="outline"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const url = `https://www.google.com/search?q=${encodeURIComponent(item.name)}`;
+                            window.open(url, "_blank", "noopener");
+                          }}
+                          className="w-full"
+                        >
+                          View
+                        </Button>
+                      )}
+                    </div>
+
                     <CardContent className="p-4 space-y-2">
                       <h3 className="font-semibold text-lg line-clamp-1 group-hover:text-primary transition-colors">
                         {item.name}

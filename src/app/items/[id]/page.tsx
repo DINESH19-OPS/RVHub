@@ -280,6 +280,34 @@ export default function ItemDetailPage() {
               />
             </div>
 
+            {/* Product / Movie / Generic action under image */}
+            <div className="px-0 pt-4 md:pt-0 md:px-0">
+              {item.category === "Products" ? (
+                <Button
+                  onClick={() => {
+                    const url = `https://www.amazon.in/s?k=${encodeURIComponent(item.name)}`;
+                    window.open(url, "_blank", "noopener");
+                  }}
+                  className="w-full bg-primary hover:bg-primary/90"
+                >
+                  Buy on Amazon
+                </Button>
+              ) : item.category === "Movies" ? (
+                <div className="text-sm text-muted-foreground">You can watch on any OTT platforms</div>
+              ) : (
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    const url = `https://www.google.com/search?q=${encodeURIComponent(item.name)}`;
+                    window.open(url, "_blank", "noopener");
+                  }}
+                  className="w-full"
+                >
+                  View
+                </Button>
+              )}
+            </div>
+
             <div className="space-y-6">
               <div>
                 <Badge className="mb-3">{item.category}</Badge>
