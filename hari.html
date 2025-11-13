@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReviewHub - Rate Anything</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .bg-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            animation: float 25s infinite;
+            border-radius: 50%;
+        }
+
+        .bg-animation span:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .bg-animation span:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 12s; }
+        .bg-animation span:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .bg-animation span:nth-child(4) { left: 40%; animation-delay: 0s; animation-duration: 18s; }
+        .bg-animation span:nth-child(5) { left: 50%; animation-delay: 3s; }
+        .bg-animation span:nth-child(6) { left: 60%; animation-delay: 7s; }
+        .bg-animation span:nth-child(7) { left: 70%; animation-delay: 15s; animation-duration: 45s; }
+        .bg-animation span:nth-child(8) { left: 80%; animation-delay: 2s; animation-duration: 35s; }
+        .bg-animation span:nth-child(9) { left: 90%; animation-delay: 0s; animation-duration: 11s; }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(50vh) scale(1);
+            }
+            90% {
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-bar:focus {
+            border-color: #667eea;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .category-btn {
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Items Grid */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .item-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .item-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .item-content {
+            padding: 20px;
+        }
+
+        .item-category {
+            display: inline-block;
+            padding: 5px 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .item-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .item-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .rating-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 18px;
+        }
+
+        .rating-number {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .reviews-count {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 40px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">ReviewHub</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#trending">Trending</a>
+                <a href="#categories">Categories</a>
+                <a href="#about">About</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Your Words Make the Difference</h1>
+            <p>Share your experiences and help others make informed decisions</p>
+            
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Search for anything..." id="searchInput">
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <div class="categories">
+                <button class="category-btn active" onclick="filterCategory('All')">All</button>
+                <button class="category-btn" onclick="filterCategory('Products')">Products</button>
+                <button class="category-btn" onclick="filterCategory('Places')">Places</button>
+                <button class="category-btn" onclick="filterCategory('Apps')">Apps</button>
+                <button class="category-btn" onclick="filterCategory('Books')">Books</button>
+                <button class="category-btn" onclick="filterCategory('Movies')">Movies</button>
+                <button class="category-btn" onclick="filterCategory('Restaurants')">Restaurants</button>
+                <button class="category-btn" onclick="filterCategory('Games')">Games</button>
+            </div>
+        </div>
+
+        <!-- Items Grid -->
+        <div class="items-grid" id="itemsGrid">
+            <!-- Items will be dynamically loaded here -->
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 ReviewHub. Your words make the difference.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Sample data
+        const items = [
+            {
+                id: 1,
+                name: "iPhone 15 Pro",
+                category: "Products",
+                description: "Latest flagship smartphone with advanced features",
+                rating: 4.8,
+                reviews: 1234,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_zJnvLwcXGHYA6yui-qBOft8dtGWlD8MYvQ&s"
+            },
+            {
+                id: 2,
+                name: "Central Park",
+                category: "Places",
+                description: "Iconic urban park in New York City",
+                rating: 4.7,
+                reviews: 8956,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYFg1fhUSFsOpcW70iE11uXzQuTpfj5tv3fA&s"
+            },
+            {
+                id: 3,
+                name: "ChatGPT",
+                category: "Apps",
+                description: "AI-powered conversational assistant",
+                rating: 4.6,
+                reviews: 5432,
+                image: "https://thumbs.dreamstime.com/b/chatgpt-artificial-intelligence-program-logo-openai-company-polygonal-green-background-illustration-banner-news-vector-286505082.jpg"
+            },
+            {
+                id: 4,
+                name: "Harry Potter",
+                category: "Books",
+                description: "Magical adventure series by J.K. Rowling",
+                rating: 4.9,
+                reviews: 12456,
+                image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1598823299i/42844155.jpg"
+            },
+            {
+                id: 5,
+                name: "Inception",
+                category: "Movies",
+                description: "Mind-bending sci-fi thriller by Christopher Nolan",
+                rating: 4.8,
+                reviews: 9876,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXWnBnPN47nWvqWJAxw-vmchKc_2u1zkG6Bw&s"
+            },
+            {
+                id: 6,
+                name: "Blue Hill",
+                category: "Restaurants",
+                description: "Farm-to-table fine dining experience",
+                rating: 4.7,
+                reviews: 3421,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWFwHWiVfL9ran5W8UbxC4kkFfbD-h2LJx6w&s"
+            },
+            {
+                id: 7,
+                name: "Elden Ring",
+                category: "Games",
+                description: "Epic fantasy action RPG adventure",
+                rating: 4.9,
+                reviews: 7654,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_cg0wulPkBFh1D9b1Q4B3LUgR7zaFdQr08g&s"
+            },
+            {
+                id: 8,
+                name: "MacBook Pro",
+                category: "Products",
+                description: "Powerful laptop for professionals",
+                rating: 4.7,
+                reviews: 4521,
+                image: "https://www.indiaistore.com/files/uploads/products/macbook-air-m3/images/hero_small_2x.png?1708555710106"
+            }
+        ];
+
+        let currentFilter = 'All';
+
+        // Render items
+        function renderItems(filteredItems) {
+            const grid = document.getElementById('itemsGrid');
+            grid.innerHTML = '';
+
+            filteredItems.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'item-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                const stars = '★'.repeat(Math.round(item.rating)) + '☆'.repeat(5 - Math.round(item.rating));
+                
+                card.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="item-image" onerror="this.src='https://via.placeholder.com/280x200?text=${item.name}'">
+                    <div class="item-content">
+                        <span class="item-category">${item.category}</span>
+                        <div class="item-title">${item.name}</div>
+                        <div class="item-description">${item.description}</div>
+                        <div class="rating-container">
+                            <div class="stars">${stars}</div>
+                            <div class="rating-number">${item.rating}</div>
+                        </div>
+                        <div class="reviews-count">${item.reviews} reviews</div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter by category
+        function filterCategory(category) {
+            currentFilter = category;
+            
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === category) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Filter items
+            const filtered = category === 'All' 
+                ? items 
+                : items.filter(item => item.category === category);
+            
+            renderItems(filtered);
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = items.filter(item => 
+                (currentFilter === 'All' || item.category === currentFilter) &&
+                (item.name.toLowerCase().includes(query) || 
+                 item.description.toLowerCase().includes(query))
+            );
+            renderItems(filtered);
+        });
+
+        // Initial render
+        renderItems(items);
+    </script>
+</body>
+</html>

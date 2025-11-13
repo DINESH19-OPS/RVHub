@@ -32,6 +32,7 @@ interface Item {
   imageUrl: string;
   averageRating: number;
   totalReviews: number;
+  imdbRating?: number;
 }
 
 export default function HomePage() {
